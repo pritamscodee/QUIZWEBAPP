@@ -1,7 +1,3 @@
-/**
- * RESULT MODEL - Tracks user quiz attempts and scores
- */
-
 import mongoose from 'mongoose';
 
 const resultSchema = new mongoose.Schema({
@@ -47,10 +43,7 @@ const resultSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
-
 resultSchema.index({ userId: 1, quizId: 1 });
 resultSchema.index({ completedAt: -1 });
-
-// ✅ ADD THIS LINE AT THE END
 const Result = mongoose.model('Result', resultSchema);
 export default Result;

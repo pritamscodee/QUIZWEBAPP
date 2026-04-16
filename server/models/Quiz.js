@@ -1,7 +1,3 @@
-/**
- * QUIZ MODEL - Defines quiz structure and questions
- */
-
 import mongoose from 'mongoose';
 
 const questionSchema = new mongoose.Schema({
@@ -32,7 +28,6 @@ const questionSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
-
 const quizSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -81,12 +76,9 @@ const quizSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
-
 quizSchema.pre('save', function(next) {
     this.totalPoints = this.questions.reduce((total, q) => total + q.points, 0);
     next();
 });
-
-// ✅ ADD THIS LINE AT THE END
 const Quiz = mongoose.model('Quiz', quizSchema);
 export default Quiz;

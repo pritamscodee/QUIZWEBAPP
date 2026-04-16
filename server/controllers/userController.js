@@ -39,30 +39,19 @@ export const register = async (req, res, next) => {
         next(error);
     }
 };
-
 export const login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
-        
-        // Find user
         const user = await User.findOne({ email });
         if (!user) {
             return sendError(res, HTTP_STATUS.UNAUTHORIZED, RESPONSE_MESSAGES.INVALID_CREDENTIALS);
         }
-        
-        // Check password
         const isValid = await user.comparePassword(password);
         if (!isValid) {
             return sendError(res, HTTP_STATUS.UNAUTHORIZED, RESPONSE_MESSAGES.INVALID_CREDENTIALS);
         }
-        
-        // USING UTILS: Generate token
         const token = generateToken(user._id, user.role);
-        
-        // USING UTILS: Log activity
         logInfo(`User logged in: ${email}`);
-        
-        // USING UTILS: Send formatted response
         return sendSuccess(res, HTTP_STATUS.OK, RESPONSE_MESSAGES.LOGIN_SUCCESS, {
             token,
             user: user.getPublicProfile()
@@ -72,15 +61,12 @@ export const login = async (req, res, next) => {
         next(error);
     }
 };
-
-// Get user profile
 export const getProfile = async (req, res, next) => {
     try {
         const user = await User.findById(req.userId);
         if (!user) {
             return sendError(res, HTTP_STATUS.NOT_FOUND, RESPONSE_MESSAGES.NOT_FOUND);
         }
-        
         return sendSuccess(res, HTTP_STATUS.OK, 'Profile fetched', user.getPublicProfile());
     } catch (error) {
         next(error);
