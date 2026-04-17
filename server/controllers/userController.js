@@ -66,7 +66,6 @@ export const login = async (req, res, next) => {
         next(error);
     }
 };
-
 export const getProfile = async (req, res, next) => {
     try {
         const user = await User.findById(req.userId);
