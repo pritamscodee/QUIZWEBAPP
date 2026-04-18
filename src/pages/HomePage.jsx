@@ -64,15 +64,6 @@ export default function HomePage() {
               )}
             </div>
           </NeoCard>
-          <div className="mt-12">
-            <div className="inline-flex items-center gap-3 bg-indigo-50 border-4 border-black px-6 py-2 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <span className="w-3 h-3 bg-green-400 border-2 border-black rounded-full animate-ping"></span>
-              <span className="font-black uppercase text-[10px] tracking-widest text-gray-500">
-                Join 5,000+ Students Today
-              </span>
-            </div>
-          </div>
-
         </div>
       </div>
     </>
