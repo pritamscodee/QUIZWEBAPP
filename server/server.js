@@ -16,11 +16,10 @@ import { logInfo, logError } from './utils/logger.js';
 const app = express();
 const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
-  'https://quizwebapp-frontend.vercel.app',      // your main production domain
-  'https://quizwebapp-fro-git-f54569-kunal-kumar-prasads-projects-d62aa511.vercel.app',
-  'https://quizwebapp-frontend-e9evobcyg.vercel.app',
-  'http://localhost:3000',                       // local development
-  process.env.FRONTEND_URL 
+  'https://quizwebapp-frontend.vercel.app',          // production domain
+  'https://quizwebapp-frontend-e9evobcyg.vercel.app', // your current preview
+  'http://localhost:3000',
+  process.env.FRONTEND_URL
 ].filter(Boolean);
 
 app.use(cors({
