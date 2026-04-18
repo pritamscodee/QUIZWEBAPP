@@ -16,8 +16,10 @@ import { logInfo, logError } from './utils/logger.js';
 const app = express();
 const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
-  'https://quizwebapp-frontend-gn91cm10f.vercel.app',
-  'http://localhost:3000',
+  'https://quizwebapp-frontend.vercel.app',      // your main production domain
+  'https://quizwebapp-fro-git-f54569-kunal-kumar-prasads-projects-d62aa511.vercel.app',
+  'https://quizwebapp-frontend-e9evobcyg.vercel.app',
+  'http://localhost:3000',                       // local development
   process.env.FRONTEND_URL 
 ].filter(Boolean);
 
