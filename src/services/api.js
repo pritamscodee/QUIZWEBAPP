@@ -1,9 +1,8 @@
 import axios from 'axios';
 import { storage } from '../utils/storage';
+import { API_BASE } from '../utils/constants';   
 
-const API_URL = import.meta.env.VITE_API_URL || '/api';
-
-const api = axios.create({ baseURL: API_URL, timeout: 10000 });
+const api = axios.create({ baseURL: API_BASE, timeout: 10000 });
 
 api.interceptors.request.use(config => { 
   const token = storage.getToken(); 
