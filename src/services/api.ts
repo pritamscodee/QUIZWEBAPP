@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || '/api';
+// Auto-switch between local dev and production backend
+const API_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD ? 'https://quizwebapp-s3g8.onrender.com/api' : '/api');
 
 const api = axios.create({ baseURL: API_URL, timeout: 10000 });
 
@@ -39,7 +41,7 @@ const apiService = {
   results: {
     submit: (data: any) => api.post('/results', data),
     getUserResults: () => api.get('/results/my-results'),
-    getAllResults: () => api.get('/results'),          // ✅ fixed (was /admin/all)
+    getAllResults: () => api.get('/results'),
     getLeaderboard: () => api.get('/results/leaderboard'),
     getById: (id: string) => api.get(`/results/${id}`),
   },
