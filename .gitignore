@@ -1,32 +1,41 @@
 # Dependencies
 node_modules/
-.pnp
-.pnp.js
+package-lock.json
+yarn.lock
 
-# Production Build
-dist/
-dist-ssr/
-*.local
-
-# Environment Variables (CRITICAL)
+# Environment files
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.production
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
 
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
 
-# Editor/System files
-.vscode/*
-!.vscode/extensions.json
-.idea/
-.DS_Store
-*.suo
-*.sw?
+# MongoDB data (if local)
+data/
+*.db
+
+# Backend compiled output (if using tsx directly)
+dist-backend/
+
+# Temporary files
+.tmp/
+temp/
