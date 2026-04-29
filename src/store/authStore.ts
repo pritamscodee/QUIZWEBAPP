@@ -26,7 +26,6 @@ export const useAuthStore = create<AuthState>()(
         try {
           const res = await api.users.login(credentials);
           const { token, user } = res.data.data;
-          // ✅ also save token directly for axios interceptor
           localStorage.setItem('token', token);
           set({ user, token, isAuthenticated: true, loading: false });
           toast.success(`Welcome back, ${user.username}`);
